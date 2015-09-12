@@ -30,6 +30,8 @@ def _parse_script(doc):
                 param = _markdown_param(line, 'name')
             elif line.startswith('// @description '):
                 param = _markdown_param(line, 'description')
+            elif line.startswith('// @match '):
+                param = _markdown_param(line, 'match')
             else:
                 continue
             vals += '\n{}\n'.format(param)
