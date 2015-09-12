@@ -64,8 +64,6 @@ function removeAttribute(k, attr) {
 
 // ==/UserScript==
 
-$('body').hide();
-
 var bootcss = GM_getResourceText('bootcss');
 var gfonts = GM_getResourceText('gfonts');
 
@@ -80,25 +78,27 @@ GM_addStyle(gfonts);
 var other_styles = [
     "body {padding:1em 0; background-color:#f1f1f1;}",
     // ".container {background-color:#fff; box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);}",
-    "h1 {font-size: 40px; font-weight: 100;}",
-    "h2 {font-size: 20px;}",
-    "h3 {font-size: 14px; text-transform: uppercase;}",
-    "h4 {font-size: 12px;}",
+    "h1 {font-size: 40px; font-weight: 100;border:none;}",
+    "h2 {font-size: 20px; border: none; border-top: 2px solid #fff; padding-top: 0.7em;}",
+    "h3 {font-size: 16px; text-transform: uppercase;}",
+    "h4 {font-size: 14px;}",
     ".subdued {font-size: 10px; opacity: 0.6;}",
     ".subdued:hover {opacity: 1;}",
     ".centered {text-align:center;}",
     "body, ul, ol, p, .btn {font-family: 'Open Sans', sans-serif;}",
-    "ul, ol, dl, p {line-height: 26px; font-size: 13px;}",
+    "ul, ol, dl, p {line-height: 26px; font-size: 12px;}",
     "h1, h2, h3, h4 {font-family: 'Oswald', sans-serif;}",
+    "dt, dd {margin-bottom: 0.4em;}",
     ".table, table {width: auto;}",
-    '.well, .alert {padding: 6px; font-size: 90%;}',
+    '.well, .alert {padding: 6px;}',
+    '.well *, table {font-size: 80%;}',
     ".alert, .table {display: inline-block;}",
     ".well .pull-right {margin: 10px 0 10px 10px;}",
     ".well .pull-left {margin: 10px 10px 10px 0;}",
     "img, video {height: auto; max-width: 100%;}",
 
     // Wikipedia specific overrides below
-    "#toc {margin: 10px 10px 10px 0;}",
+    "#toc {margin: 0; width: 100%;}",
     // ".infobox, #toc {max-width: 20%;min-width: 100px;}",
     ".infobox table, #toc table, table table {width: 100%;max-width:100%;}",
     "table.ombox, table.ambox, table.cmbox {margin: 1em 0;}"
@@ -108,8 +108,9 @@ var other_styles = [
 GM_addStyle(other_styles);
 
 // Gut the outer elements, keep the main content and search.
-$('body').empty().append('<div id="site-sifter" class="container"><div class="row"><div class="col-md-offset-1 col-md-10">' + temp + '</div><div class="col-md-1"></div></div></div>');
+$('body').empty().append('<div id="site-sifter" class="container"><div class="row"><div class="col-md-2" id="left-col"></div><div class="col-md-10" id="main-col">' + temp + '</div></div></div>');
 $('#firstHeading').append(search);
+$('#toc').appendTo('#left-col');
 
 // Initial cleanup
 cleanBasic();
@@ -119,8 +120,8 @@ replaceDeprecated();
 $('#siteSub, .mw-editsection').addClass('subdued');
 
 // Misc cleanup/style changes
-$('#toc').addClass('pull-left well');
-$('.vertical-navbox').addClass('pull-right well');
+$('#toc').addClass('pull-left well').closest('div').addClass('clearfix');
+$('.vertical-navbox').addClass('pull-right well').closest('div').addClass('clearfix');
 $('.infobox').addClass('well');
 
 $('.mw-editsection').html('edit').addClass('btn btn-xs btn-default');
@@ -132,10 +133,11 @@ $('#simpleSearch').wrap('<form id="mainsearch" class="pull-right"></form>').attr
 $('input, textarea, select').addClass('input-sm form-control');
 
 $('form').addClass('form form-inline');
-$('button, input[type="submit"]').addClass('btn btn-md btn-primary');
+$('button, input[type="submit"]').addClass('btn btn-xs btn-primary');
+$('.plainlinks li a').addClass('btn btn-xs btn-default');
 
 // Table stuff
-$('table').addClass('table');
+$('table').addClass('table table-striped').removeClass('wikitable');
 
 // Images etc
 $('.gallery img').addClass('img-thumbnail');
@@ -167,5 +169,3 @@ $('.mw-editsection a, .NavToggle').addClass('label label-default').css({
 
 // Remove ALL inline css -- use with caution!
 // $('*').attr('style', '');
-
-$('body').show();
