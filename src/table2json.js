@@ -11,8 +11,10 @@
 // @require      https://raw.githubusercontent.com/lightswitch05/table-to-json/master/lib/jquery.tabletojson.min.js
 // ==/UserScript==
 
-$('body').prepend('<a id="table2json" style="font-size:10px;font-family:arial, sans-serif;position:fixed;z-index:99999;top: 10px;left:10px;background-color:#444;color:#fff;padding:4px;margin:2px;" href="javascript:;">ALL table data to JSON</a>');
-$('body').find('#table2json').on('click', exportTableData);
+if($('table').length > 0) {
+    $('body').prepend('<a id="table2json" style="font-size:10px;font-family:arial, sans-serif;position:fixed;z-index:99999;top: 10px;left:10px;background-color:#444;color:#fff;padding:4px;margin:2px;" href="javascript:;">ALL table data to JSON</a>');
+    $('body').find('#table2json').on('click', exportTableData);
+}
 
 function exportTableData(e){
     e.preventDefault();
