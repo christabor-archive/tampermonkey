@@ -18,6 +18,12 @@ My ongoing TamperMonkey scripts for Chrome.
 
 **@match**:         https://en.wikipedia.org/*
 
+#### table2json.js
+
+**@name**:          table-to-json-button
+
+**@description**:   Uses https://github.com/lightswitch05/table-to-json to export all table data on a page, by the click of a button.
+
 #### toggle-columns.js
 
 **@name**:          toggle-columns
