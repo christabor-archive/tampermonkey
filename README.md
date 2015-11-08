@@ -30,3 +30,9 @@ My ongoing TamperMonkey scripts for Chrome.
 
 **@description**:   Add event handlers for toggling off any column by clicking. Useful for copy-pasting large tables, or just hiding extraneous content.
 
+#### wiki-list2json.js
+
+**@name**:          wikilist2json
+
+**@description**:   Convert wikipedia lists to json, using the h2 and uls provided on most articles.
+
