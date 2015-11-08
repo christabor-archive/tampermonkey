@@ -56,8 +56,7 @@ function removeAttribute(k, attr) {
 // @author       Chris Tabor <dxdstudio@gmail.com>
 // @support      https://github.com/christabor/tampermonkey/issues
 // @homepage     https://github.com/christabor/tampermonkey/
-// @run-at       document-start
-
+// @run-at       document-end
 // @require      http://code.jquery.com/jquery-latest.js
 // @resource     bootcss https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
 // @resource     gfonts https://fonts.googleapis.com/css?family=Oswald:400,300,700|Open+Sans:400,300italic,400italic,700,700italic
@@ -86,11 +85,14 @@ var other_styles = [
     ".subdued:hover {opacity: 1;}",
     ".centered {text-align:center;}",
     "body, ul, ol, p, .btn {font-family: 'Open Sans', sans-serif;}",
-    "ul, ol, dl, p {line-height: 26px; font-size: 12px;}",
+    "ul, ol, dl {line-height: 12px; font-size: 12px;}",
+    "li, dd {margin-bottom: 6px;}",
+    "p {line-height: 26px; font-size: 12px;}",
     "h1, h2, h3, h4 {font-family: 'Oswald', sans-serif;}",
     "dt, dd {margin-bottom: 0.4em;}",
     ".table, table {width: auto;}",
-    '.well, .alert {padding: 6px;}',
+    '.alert {padding: 8px;}',
+    ".well {border: none; padding: 10px;}",
     '.well *, table {font-size: 80%;}',
     ".alert, .table {display: inline-block;}",
     ".well .pull-right {margin: 10px 0 10px 10px;}",
@@ -98,8 +100,10 @@ var other_styles = [
     "img, video {height: auto; max-width: 100%;}",
 
     // Wikipedia specific overrides below
-    "#toc {margin: 0; width: 100%;}",
+    "#toc {margin: 0; width: 100%; border: none;}",
+    "div.thumbinner, html .thumbimage {border:none;}",
     // ".infobox, #toc {max-width: 20%;min-width: 100px;}",
+    "div.reflist ol.references, .refbegin li {font-size: 9px;}",
     ".infobox table, #toc table, table table {width: 100%;max-width:100%;}",
     "table.ombox, table.ambox, table.cmbox {margin: 1em 0;}"
 ].join('\n');
@@ -140,7 +144,7 @@ $('.plainlinks li a').addClass('btn btn-xs btn-default');
 $('table').addClass('table table-striped').removeClass('wikitable');
 
 // Images etc
-$('.gallery img').addClass('img-thumbnail');
+$('.gallery img, .thumbimage img').addClass('img-thumbnail');
 
 // Convert close button images to character
 $('[alt="close"]').replaceWith('&times;');
