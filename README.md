@@ -36,3 +36,5 @@ My ongoing TamperMonkey scripts for Chrome.
 
 **@description**:   Convert wikipedia lists to json, using the h2 and uls provided on most articles.
 
+**@match**:         https://en.wikipedia.org/*
+

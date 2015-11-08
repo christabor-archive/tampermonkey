@@ -8,6 +8,7 @@
 // @run-at       document-end
 // @version      0.1
 // @require      http://code.jquery.com/jquery-latest.js
+// @match        https://en.wikipedia.org/*
 // ==/UserScript==
 
 if($('ul').length > 0) {
