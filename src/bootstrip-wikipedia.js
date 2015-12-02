@@ -93,7 +93,6 @@ var other_styles = [
     ".table, table {width: auto;}",
     '.alert {padding: 8px;}',
     ".well {border: none; padding: 10px;}",
-    '.well *, table {font-size: 80%;}',
     ".alert, .table {display: inline-block;}",
     ".well .pull-right {margin: 10px 0 10px 10px;}",
     ".well .pull-left {margin: 10px 10px 10px 0;}",
@@ -101,7 +100,10 @@ var other_styles = [
 
     // Wikipedia specific overrides below
     "#toc {margin: 0; width: 100%; border: none;}",
+    "#toc .tocnumber, #toc .toctext {font-size: 80%;}",
+    "blockquote {border-color: #ccc;}",
     "div.thumbinner, html .thumbimage {border:none;}",
+    "#mainsearch input[type=\"submit\"] {margin-left: 4px;}",
     // ".infobox, #toc {max-width: 20%;min-width: 100px;}",
     "div.reflist ol.references, .refbegin li {font-size: 9px;}",
     ".infobox table, #toc table, table table {width: 100%;max-width:100%;}",
