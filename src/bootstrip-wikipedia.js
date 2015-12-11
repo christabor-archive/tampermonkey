@@ -85,7 +85,7 @@ var other_styles = [
     ".subdued:hover {opacity: 1;}",
     ".centered {text-align:center;}",
     "body, ul, ol, p, .btn {font-family: 'Open Sans', sans-serif;}",
-    "ul, ol, dl {line-height: 12px; font-size: 12px;}",
+    "ul, ol, dl {font-size: 0.8em;line-height: 1.4em;}",
     "li, dd {margin-bottom: 6px;}",
     "p {line-height: 26px; font-size: 12px;}",
     "h1, h2, h3, h4 {font-family: 'Oswald', sans-serif;}",
@@ -104,6 +104,7 @@ var other_styles = [
     "blockquote {border-color: #ccc;}",
     "div.thumbinner, html .thumbimage {border:none;}",
     "#mainsearch input[type=\"submit\"] {margin-left: 4px;}",
+    ".container-fluid h1:first-of-type {margin-top: 0;}",
     // ".infobox, #toc {max-width: 20%;min-width: 100px;}",
     "div.reflist ol.references, .refbegin li {font-size: 9px;}",
     ".infobox table, #toc table, table table {width: 100%;max-width:100%;}",
@@ -114,8 +115,8 @@ var other_styles = [
 GM_addStyle(other_styles);
 
 // Gut the outer elements, keep the main content and search.
-$('body').empty().append('<div id="site-sifter" class="container"><div class="row"><div class="col-md-2" id="left-col"></div><div class="col-md-10" id="main-col">' + temp + '</div></div></div>');
-$('#firstHeading').append(search);
+$('body').empty().append('<div id="site-sifter" class="container-fluid"><div class="row"><div class="col-md-2" id="left-col"></div><div class="col-md-10" id="main-col">' + temp + '</div></div></div>');
+$('#firstHeading').append(search).attr('id', '').attr('class', '');
 $('#toc').appendTo('#left-col');
 
 // Initial cleanup
@@ -174,4 +175,4 @@ $('.mw-editsection a, .NavToggle').addClass('label label-default').css({
 });
 
 // Remove ALL inline css -- use with caution!
-// $('*').attr('style', '');
+$('*').attr('style', '');
