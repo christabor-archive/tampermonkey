@@ -105,6 +105,7 @@ var other_styles = [
     "div.thumbinner, html .thumbimage {border:none;}",
     "#mainsearch input[type=\"submit\"] {margin-left: 4px;}",
     ".container-fluid h1:first-of-type {margin-top: 0;}",
+    "#siteSub {display: block;font-size: 92%;background-color: black;color: white;padding: 0.4em 0.8em;font-size: 0.6em;text-align: right;position: fixed;top: 0;right: 0;}",
     // ".infobox, #toc {max-width: 20%;min-width: 100px;}",
     "div.reflist ol.references, .refbegin li {font-size: 9px;}",
     ".infobox table, #toc table, table table {width: 100%;max-width:100%;}",
